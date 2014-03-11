@@ -1,4 +1,4 @@
-package de.gravitex.bpmtest.processref.delegate;
+package de.gravitex.bpmtest.processref.delegate.verysimpleprocess;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
