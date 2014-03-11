@@ -26,7 +26,8 @@ public class TestJBossConnection {
 		try {
 			ctxt = new InitialContext(props);
 			BpmTestRemote processingTest = (BpmTestRemote) ctxt.lookup("ejb:bpm-ear-1.0-SNAPSHOT/bpm-ejb-1.0-SNAPSHOT/BpmTest!de.gravitex.bpmtest.ejb.BpmTestRemote");
-			processingTest.startProcessInstance("hhhhhhhhhhhhhhhhhhhhhh23");
+//			processingTest.startProcessInstance("hhhhhhhhhhhhhhhhhhhhhh23");
+			processingTest.sayMoo("werner");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}

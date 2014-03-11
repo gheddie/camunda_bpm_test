@@ -39,7 +39,7 @@
       <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
     </bpmn2:serviceTask>
     <bpmn2:sequenceFlow id="SequenceFlow_5" name="" sourceRef="ParallelGateway_1" targetRef="UserTask_2"/>
-    <bpmn2:userTask id="UserTask_2" camunda:candidateGroups="management" name="Drink more tea">
+    <bpmn2:userTask id="UserTask_2" camunda:candidateGroups="management" name="Drink more ale">
       <bpmn2:incoming>SequenceFlow_5</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_6</bpmn2:outgoing>
     </bpmn2:userTask>

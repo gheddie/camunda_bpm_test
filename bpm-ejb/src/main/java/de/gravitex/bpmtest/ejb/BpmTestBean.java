@@ -19,4 +19,8 @@ public class BpmTestBean implements BpmTest {
 //			processEngine.getTaskService().createTaskQuery().list();
 //		}
 	}
+
+	public void sayMoo(String moo) {
+		System.out.println("moo : " + moo);
+	}
 }
