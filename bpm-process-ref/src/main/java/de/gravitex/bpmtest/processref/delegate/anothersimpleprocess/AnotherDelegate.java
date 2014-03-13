@@ -6,10 +6,12 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 
 import de.gravitex.bpmtest.ejb.BpmTest;
+import de.gravitex.bpmtest.ejb.MyAdapter;
 
 public class AnotherDelegate implements JavaDelegate {
 	
 	@Inject
+	@MyAdapter
 	BpmTest bpmTest;
 	
 	public void execute(DelegateExecution arg0) throws Exception {
