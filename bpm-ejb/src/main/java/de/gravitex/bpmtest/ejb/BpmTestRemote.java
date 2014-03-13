@@ -5,7 +5,5 @@ import javax.ejb.Remote;
 @Remote
 public interface BpmTestRemote {
 
-	public void startProcessInstance(String processDefinitionKey);
-	
-	public void sayMoo(String moo);
+	public void saySomething(String something);
 }
