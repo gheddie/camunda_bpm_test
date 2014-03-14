@@ -1,9 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.gravitex.bpmtest</groupId>
+
+  <parent>
+    <groupId>de.gravitex.bpmtest</groupId>
+    <artifactId>root</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
 	<artifactId>bpm-process-ref</artifactId>
-	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>BPM Process Reference</name>
 
@@ -16,7 +21,7 @@
 		<dependency>
 			<groupId>org.camunda.bpm</groupId>
 			<artifactId>camunda-engine-cdi</artifactId>
-			<version>7.1.0-alpha3</version>
+			<version>${camunda.version}</version>
 		</dependency>
 		<dependency>
 			<!-- Java EE 6 Specification -->
@@ -29,7 +34,8 @@
 		<dependency>
 			<groupId>org.camunda.bpm</groupId>
 			<artifactId>camunda-engine</artifactId>
-			<version>7.1.0-alpha3</version>
+			<version>${camunda.version}</version>
+      <scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>

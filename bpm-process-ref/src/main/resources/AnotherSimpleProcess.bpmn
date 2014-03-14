@@ -21,7 +21,7 @@
       <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
     </bpmn2:userTask>
     <bpmn2:sequenceFlow id="SequenceFlow_1" name="" sourceRef="StartEvent_1" targetRef="UserTask_1"/>
-    <bpmn2:serviceTask id="ServiceTask_1" camunda:class="de.gravitex.bpmtest.processref.delegate.anothersimpleprocess.AnotherDelegate" name="Task 2">
+    <bpmn2:serviceTask id="ServiceTask_1" camunda:delegateExpression="#{anotherDelegate}" name="Task 2">
       <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
     </bpmn2:serviceTask>
