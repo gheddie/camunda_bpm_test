@@ -1,17 +1,16 @@
 package de.gravitex.bpmtest.processref.delegate.anothersimpleprocess;
 
-import javax.inject.Inject;
-
+import de.gravitex.bpmtest.ejb.BpmTest;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 
-import de.gravitex.bpmtest.ejb.BpmTest;
-import de.gravitex.bpmtest.ejb.MyAdapter;
+import javax.inject.Inject;
+import javax.inject.Named;
 
+@Named
 public class AnotherDelegate implements JavaDelegate {
 	
 	@Inject
-	@MyAdapter
 	BpmTest bpmTest;
 	
 	public void execute(DelegateExecution arg0) throws Exception {
