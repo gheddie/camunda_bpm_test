@@ -32,7 +32,7 @@ public class TestJBossConnection {
 			
 //			engineProvider.testReadDatabase();
 			
-			engineProvider.testWriteDatabase(28307l, "new_cust_vat_123");
+			engineProvider.testWriteDatabase(28307l, "new_cust_vat_4711");
 			
 		} catch (NamingException e) {
 			e.printStackTrace();
