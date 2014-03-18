@@ -7,5 +7,7 @@ public interface EngineProviderRemote {
 
 	public void startProcessInstance(String processDefinitionKey);
 
-	public void testDBConnection();
+	public void testReadDatabase();
+	
+	public void testWriteDatabase(Long customerId, String newCustomerVatNumber);
 }

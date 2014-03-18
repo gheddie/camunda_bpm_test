@@ -30,7 +30,9 @@ public class TestJBossConnection {
 			
 			engineProvider.startProcessInstance("123-456-789");
 			
-			engineProvider.testDBConnection();
+//			engineProvider.testReadDatabase();
+			
+			engineProvider.testWriteDatabase(28307l, "new_cust_vat_123");
 			
 		} catch (NamingException e) {
 			e.printStackTrace();
