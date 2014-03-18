@@ -6,7 +6,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import de.gravitex.bpmtest.ejb.BpmTestRemote;
+import de.gravitex.bpmtest.ejb.remoting.EngineProviderRemote;
 
 public class TestJBossConnection {
 
@@ -26,8 +26,11 @@ public class TestJBossConnection {
 		try {		
 			ctxt = new InitialContext(props);
 			
-			BpmTestRemote processingTest = lookupRemoteInterface(BpmTestRemote.class, ctxt);
-			processingTest.saySomething("hello");
+			EngineProviderRemote engineProvider = lookupRemoteInterface(EngineProviderRemote.class, ctxt);
+			
+			engineProvider.startProcessInstance("123-456-789");
+			
+			engineProvider.testDBConnection();
 			
 		} catch (NamingException e) {
 			e.printStackTrace();
