@@ -40,7 +40,9 @@ public class EngineProviderBean implements EngineProvider {
 		em.persist(customer);
 	}
 
-	public void queryTasks() {
-		System.out.println("i have "+processEngine.getTaskService().createTaskQuery().list().size()+" tasks at the moment");
+	public List<Task> queryTasks() {
+		List<Task> tasks = processEngine.getTaskService().createTaskQuery().list();
+		System.out.println("i have "+tasks.size()+" tasks at the moment");
+		return tasks;
 	}
 }

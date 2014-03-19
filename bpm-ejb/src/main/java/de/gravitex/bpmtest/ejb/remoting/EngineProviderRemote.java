@@ -1,6 +1,10 @@
 package de.gravitex.bpmtest.ejb.remoting;
 
+import java.util.List;
+
 import javax.ejb.Remote;
+
+import org.camunda.bpm.engine.task.Task;
 
 @Remote
 public interface EngineProviderRemote {
@@ -11,5 +15,5 @@ public interface EngineProviderRemote {
 	
 	public void testWriteDatabase(Long customerId, String newCustomerVatNumber);
 
-	public void queryTasks();
+	public List<Task> queryTasks();
 }

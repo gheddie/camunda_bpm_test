@@ -1,10 +1,13 @@
 package de.gravitex.bpmtest;
 
+import java.util.List;
 import java.util.Properties;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+
+import org.camunda.bpm.engine.task.Task;
 
 import de.gravitex.bpmtest.ejb.remoting.EngineProviderRemote;
 
@@ -30,7 +33,8 @@ public class TestJBossConnection {
 			
 //			engineProvider.startProcessInstance("manyParallels");
 			
-			engineProvider.queryTasks();
+			List<Task> tasks = engineProvider.queryTasks();
+			System.out.println(tasks.size() + " tasks received on client side...");
 			
 //			engineProvider.testReadDatabase();
 			
