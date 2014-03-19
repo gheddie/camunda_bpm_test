@@ -10,4 +10,6 @@ public interface EngineProviderRemote {
 	public void testReadDatabase();
 	
 	public void testWriteDatabase(Long customerId, String newCustomerVatNumber);
+
+	public void queryTasks();
 }

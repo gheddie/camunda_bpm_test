@@ -28,11 +28,13 @@ public class TestJBossConnection {
 			
 			EngineProviderRemote engineProvider = lookupRemoteInterface(EngineProviderRemote.class, ctxt);
 			
-			engineProvider.startProcessInstance("123-456-789");
+//			engineProvider.startProcessInstance("manyParallels");
+			
+			engineProvider.queryTasks();
 			
 //			engineProvider.testReadDatabase();
 			
-			engineProvider.testWriteDatabase(28307l, "new_cust_vat_4711");
+//			engineProvider.testWriteDatabase(28307l, "new_cust_vat_4712_OOO");
 			
 		} catch (NamingException e) {
 			e.printStackTrace();
