@@ -31,14 +31,14 @@ public class TestJBossConnection {
 			
 			EngineProviderRemote engineProvider = lookupRemoteInterface(EngineProviderRemote.class, ctxt);
 			
-//			engineProvider.startProcessInstance("manyParallels");
+			engineProvider.startProcessInstance("simpCollCustomerProcess");
 			
 			List<Task> tasks = engineProvider.queryTasks();
 			System.out.println(tasks.size() + " tasks received on client side...");
 			
-//			engineProvider.testReadDatabase();
+			engineProvider.testReadDatabase();
 			
-//			engineProvider.testWriteDatabase(28307l, "new_cust_vat_4712_OOO");
+			engineProvider.testWriteDatabase(28307l, "new_cust_vat_4712_PPP123");
 			
 		} catch (NamingException e) {
 			e.printStackTrace();
