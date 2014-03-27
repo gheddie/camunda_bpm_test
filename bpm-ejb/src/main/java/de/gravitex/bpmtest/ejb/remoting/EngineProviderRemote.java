@@ -11,9 +11,7 @@ public interface EngineProviderRemote {
 
 	public void startProcessInstance(String processDefinitionKey);
 
-	public void testReadDatabase();
-	
-	public void testWriteDatabase(Long customerId, String newCustomerVatNumber);
-
 	public List<Task> queryTasks();
+	
+	public void completeTask(String taskId);
 }

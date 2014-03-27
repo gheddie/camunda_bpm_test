@@ -31,6 +31,11 @@ public class TestJBossConnection {
 			
 			EngineProviderRemote engineProvider = lookupRemoteInterface(EngineProviderRemote.class, ctxt);
 			
+//			engineProvider.startProcessInstance("anotherSimpleProcess");
+			
+			engineProvider.completeTask("cde120f9-b5b8-11e3-91d8-b6c920524153");			
+			
+			/*
 			engineProvider.startProcessInstance("simpCollCustomerProcess");
 			
 			List<Task> tasks = engineProvider.queryTasks();
@@ -39,6 +44,7 @@ public class TestJBossConnection {
 			engineProvider.testReadDatabase();
 			
 			engineProvider.testWriteDatabase(28307l, "new_cust_vat_4712_PPP123");
+			*/
 			
 		} catch (NamingException e) {
 			e.printStackTrace();
