@@ -25,7 +25,7 @@ public class ReferenceProcessApplication extends EjbProcessApplication {
 	@PostConstruct
 	public void start() {		
 		deploy();
-		System.out.println(" ------------------ DEPLOYED ------------------ ");
+		System.out.println(" ------------------ DEPLOYED ------------------- ");
 	}
 
 	@PreDestroy
