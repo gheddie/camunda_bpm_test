@@ -19,7 +19,7 @@ public class BLAdapterBean implements BLAdapter {
 	@SuppressWarnings("unchecked")
 	public void invokeSomeBusinessLogic(String command) {
 //		System.out.println("bl command received : '" + command + "'.");
-		System.out.println("bl command received : " + command + ", my em is : "+em+".");
+		System.out.println("some bl command received : " + command + ", my em is : "+em+".");
 		List<Customer> customers = em.createNamedQuery(Customer.FIND_ALL).getResultList();
 		System.out.println(customers.size() + " customers found.");
 	}
