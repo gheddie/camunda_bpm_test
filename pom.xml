@@ -14,7 +14,7 @@
 	</modules>
 
   <properties>
-    <camunda.version>7.1.0-alpha4</camunda.version>
+    <camunda.version>7.1.0-Final</camunda.version>
   </properties>
 
 </project>

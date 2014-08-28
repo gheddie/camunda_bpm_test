@@ -1,6 +1,7 @@
 package de.gravitex.bpmtest.ejb.remoting;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.ejb.Local;
@@ -23,9 +24,9 @@ public class EngineProviderBean implements EngineProvider {
 	@Resource(mappedName = "java:global/camunda-bpm-platform/process-engine/default")
 	private ProcessEngine processEngine;	
 	
-	public void startProcessInstance(String processDefinitionKey) {
+	public void startProcessInstance(String processDefinitionKey, Map<String, Object> variables) {
 		System.out.println("starting process instance by key : '"+processDefinitionKey+"' [process engine='"+processEngine+"'].");
-		processEngine.getRuntimeService().startProcessInstanceByKey(processDefinitionKey);
+		processEngine.getRuntimeService().startProcessInstanceByKey(processDefinitionKey, variables);
 	}
 
 	public List<Task> queryTasks() {
@@ -36,5 +37,9 @@ public class EngineProviderBean implements EngineProvider {
 	
 	public void completeTask(String taskId) {
 		processEngine.getTaskService().complete(taskId);
+	}
+
+	public void sayMoo() {
+		System.out.println("this is NOT the end...");
 	}
 }

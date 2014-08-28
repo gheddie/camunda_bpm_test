@@ -5,7 +5,7 @@
 	http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
 	<persistence-unit name="coredb">
-		<jta-data-source>java:/COREDB</jta-data-source>
+		<jta-data-source>java:/BPM_PLAYGROUND</jta-data-source>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
 			<property name="hibernate.id.new_generator_mappings" value="false" />

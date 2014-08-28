@@ -1,54 +1,77 @@
 package de.gravitex.bpmtest;
 
-import java.util.List;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import org.camunda.bpm.engine.task.Task;
+import org.apache.cxf.interceptor.LoggingInInterceptor;
+import org.apache.cxf.interceptor.LoggingOutInterceptor;
+import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 
+import de.gravitex.bpmtest.ejb.common.BpmnVariables;
+import de.gravitex.bpmtest.ejb.common.ProcessDefinitionKeys;
+import de.gravitex.bpmtest.ejb.logic.wstest.WSTest;
+import de.gravitex.bpmtest.ejb.logic.wstest.WSTestRemote;
 import de.gravitex.bpmtest.ejb.remoting.EngineProviderRemote;
 
 public class TestJBossConnection {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
+//		testCarRequestProcess();
+		testWebservice();
+	}
 
+	private static void testWebservice() {
+		
+		//BY JNDI
+		try {
+			InitialContext context = getServerContext();
+			lookupRemoteInterface(WSTestRemote.class, context).triggerWebservice("moo123_frank_pe17", 0, 0);
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+			
+		//BY WS CALL
+		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
+		factory.getInInterceptors().add(new LoggingInInterceptor());
+		factory.getOutInterceptors().add(new LoggingOutInterceptor());
+		factory.setServiceClass(WSTestRemote.class);
+		factory.setAddress("http://bcc-ws65:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
+		WSTestRemote ws = (WSTestRemote) factory.create();
+		int result = ws.triggerWebservice("hello from web service !", 2, 67);
+		System.out.println("result in client is "+result+".");
+	}
+
+	private static void testCarRequestProcess() {
+		try {
+			InitialContext context = getServerContext();
+			Map<String, Object> variables = new HashMap<String, Object>();
+			variables.put(BpmnVariables.CarRequestVariables.NUM_SEATS_REQUESTED, 4);
+			variables.put(BpmnVariables.CarRequestVariables.REQUEST_CAR_FROM, Calendar.getInstance().getTime());
+			variables.put(BpmnVariables.CarRequestVariables.REQUEST_CAR_UNTIL, Calendar.getInstance().getTime());
+			lookupRemoteInterface(EngineProviderRemote.class, context).startProcessInstance(ProcessDefinitionKeys.CAR_REQUEST, variables);			
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}		
+	}
+
+	private static InitialContext getServerContext() throws NamingException {
+		
 		Properties props = new Properties();
 
 		props.put("jboss.naming.client.ejb.context", true);
 		props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-		props.put(Context.PROVIDER_URL, "remote://localhost:4447");
+		props.put(Context.PROVIDER_URL, "remote://localhost:8282");
 		props.put(Context.SECURITY_PRINCIPAL, "pruser");
 		props.put(Context.SECURITY_CREDENTIALS, "pruser123@");
 		props.put("java.naming.factory.initial", "org.jboss.naming.remote.client.InitialContextFactory");
 
-		InitialContext ctxt = null;
-
-		try {		
-			ctxt = new InitialContext(props);
-			
-			EngineProviderRemote engineProvider = lookupRemoteInterface(EngineProviderRemote.class, ctxt);
-			
-//			engineProvider.startProcessInstance("anotherSimpleProcess");
-			
-			engineProvider.completeTask("cde120f9-b5b8-11e3-91d8-b6c920524153");			
-			
-			/*
-			engineProvider.startProcessInstance("simpCollCustomerProcess");
-			
-			List<Task> tasks = engineProvider.queryTasks();
-			System.out.println(tasks.size() + " tasks received on client side...");
-			
-			engineProvider.testReadDatabase();
-			
-			engineProvider.testWriteDatabase(28307l, "new_cust_vat_4712_PPP123");
-			*/
-			
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
+		return new InitialContext(props);		
 	}
 
 	@SuppressWarnings("unchecked")
