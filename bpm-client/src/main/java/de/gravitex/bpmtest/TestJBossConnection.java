@@ -15,7 +15,6 @@ import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 
 import de.gravitex.bpmtest.ejb.common.BpmnVariables;
 import de.gravitex.bpmtest.ejb.common.ProcessDefinitionKeys;
-import de.gravitex.bpmtest.ejb.logic.wstest.WSTest;
 import de.gravitex.bpmtest.ejb.logic.wstest.WSTestRemote;
 import de.gravitex.bpmtest.ejb.remoting.EngineProviderRemote;
 
@@ -23,7 +22,18 @@ public class TestJBossConnection {
 
 	public static void main(String[] args) {		
 //		testCarRequestProcess();
-		testWebservice();
+//		testWebservice();
+		testWebserviceSimple();
+	}
+
+	private static void testWebserviceSimple() {
+		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
+		factory.getInInterceptors().add(new LoggingInInterceptor());
+		factory.getOutInterceptors().add(new LoggingOutInterceptor());
+		factory.setServiceClass(WSTestRemote.class);
+		factory.setAddress("http://bcc-ws65:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
+		WSTestRemote ws = (WSTestRemote) factory.create();
+		ws.triggerWebserviceSimple();
 	}
 
 	private static void testWebservice() {
@@ -31,7 +41,7 @@ public class TestJBossConnection {
 		//BY JNDI
 		try {
 			InitialContext context = getServerContext();
-			lookupRemoteInterface(WSTestRemote.class, context).triggerWebservice("moo123_frank_pe17", 0, 0);
+			lookupRemoteInterface(WSTestRemote.class, context).triggerWebservice("moo", 0, 0);
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -43,7 +53,7 @@ public class TestJBossConnection {
 		factory.setServiceClass(WSTestRemote.class);
 		factory.setAddress("http://bcc-ws65:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
 		WSTestRemote ws = (WSTestRemote) factory.create();
-		int result = ws.triggerWebservice("hello from web service !", 2, 67);
+		int result = ws.triggerWebservice("hello from web service !", 6, 32);
 		System.out.println("result in client is "+result+".");
 	}
 

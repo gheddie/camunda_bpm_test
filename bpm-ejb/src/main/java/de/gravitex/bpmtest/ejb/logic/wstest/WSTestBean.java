@@ -21,4 +21,8 @@ public class WSTestBean implements WSTest {
 		System.out.println("ws :: " + message);
 		return (x+y);
 	}
+
+	public void triggerWebserviceSimple() {
+		System.out.println(" ### triggerWebserviceSimple ### ");
+	}
 }

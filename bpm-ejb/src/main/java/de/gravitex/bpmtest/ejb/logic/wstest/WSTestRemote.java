@@ -8,4 +8,6 @@ import javax.jws.WebService;
 public interface WSTestRemote {
 
 	public int triggerWebservice(String message, int x, int y);
+	
+	public void triggerWebserviceSimple();
 }
