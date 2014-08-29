@@ -9,11 +9,7 @@ import javax.jws.WebService;
 @Stateless(name = "WSTest")
 @Local(WSTest.class)
 @Remote(WSTestRemote.class)
-@WebService(name = "HelloWorldWS")
-//@WebService(name = "HelloWorldWS", targetNamespace="http://my-company/ws/")
-//@WebService(name = "HelloWorldWS", targetNamespace="http://my-company/ws/")
-//@WebContext(authMethod = "BASIC", contextRoot = "helloWS", urlPattern = "/*")
-//@SecurityDomain("helloworld-webservice-login")
+@WebService(name = "HelloWorldWS", targetNamespace="http://wstest.logic.ejb.bpmtest.gravitex.de/")
 public class WSTestBean implements WSTest {
 
 	@WebMethod
@@ -22,6 +18,7 @@ public class WSTestBean implements WSTest {
 		return (x+y);
 	}
 
+	@WebMethod
 	public void triggerWebserviceSimple() {
 		System.out.println(" ### triggerWebserviceSimple ### ");
 	}

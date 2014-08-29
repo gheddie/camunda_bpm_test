@@ -31,7 +31,7 @@ public class TestJBossConnection {
 		factory.getInInterceptors().add(new LoggingInInterceptor());
 		factory.getOutInterceptors().add(new LoggingOutInterceptor());
 		factory.setServiceClass(WSTestRemote.class);
-		factory.setAddress("http://bcc-ws65:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
+		factory.setAddress("http://localhost:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
 		WSTestRemote ws = (WSTestRemote) factory.create();
 		ws.triggerWebserviceSimple();
 	}
@@ -51,9 +51,9 @@ public class TestJBossConnection {
 		factory.getInInterceptors().add(new LoggingInInterceptor());
 		factory.getOutInterceptors().add(new LoggingOutInterceptor());
 		factory.setServiceClass(WSTestRemote.class);
-		factory.setAddress("http://bcc-ws65:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
+		factory.setAddress("http://localhost:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
 		WSTestRemote ws = (WSTestRemote) factory.create();
-		int result = ws.triggerWebservice("hello from web service !", 6, 32);
+		int result = ws.triggerWebservice("hello from web service !", 6, 66);
 		System.out.println("result in client is "+result+".");
 	}
 
