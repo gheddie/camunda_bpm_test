@@ -1,1 +1,3 @@
-system("java de.gravitex.bpmtest.PerlWebServiceConnector -componentId ABC-DEF-GHI-123 -componentState CLOSED")
+my $componentId = "test_vb";
+my $componentState = "CLOSED";
+system("java de.gravitex.bpmtest.PerlWebServiceConnector -componentId $componentId -componentState $componentState")
