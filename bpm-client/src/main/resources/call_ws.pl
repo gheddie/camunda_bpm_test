@@ -1,0 +1,1 @@
+system("java de.gravitex.bpmtest.PerlWebServiceConnector -componentId ABC-DEF-GHI-123 -componentState CLOSED")

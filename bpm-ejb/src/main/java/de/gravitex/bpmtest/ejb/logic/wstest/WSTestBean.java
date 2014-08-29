@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import de.gravitex.bpmtest.ejb.logic.ComponentState;
+
 @Stateless(name = "WSTest")
 @Local(WSTest.class)
 @Remote(WSTestRemote.class)
@@ -19,7 +21,7 @@ public class WSTestBean implements WSTest {
 	}
 
 	@WebMethod
-	public void triggerWebserviceSimple() {
-		System.out.println(" ### triggerWebserviceSimple ### ");
+	public void triggerWebserviceSimple(String componentId, ComponentState componentState) {
+		System.out.println(" ### triggerWebserviceSimple [componentId:"+componentId+"|componentState:"+componentState+"] ### ");
 	}
 }
