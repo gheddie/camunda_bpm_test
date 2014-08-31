@@ -6,7 +6,7 @@
 use SOAP::Lite;
  
 # WSDbfetch WSDL URL
-my $WSDL = 'http://localhost:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl';
+my $WSDL = 'http://192.168.0.5:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl';
 # Default option values
 my ($query, $format, $style) = ('uniprot:wap_rat', 'fasta', 'raw');
  

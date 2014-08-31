@@ -23,7 +23,8 @@ public class PerlWebServiceConnectorFixedParameters {
 		factory.getInInterceptors().add(new LoggingInInterceptor());
 		factory.getOutInterceptors().add(new LoggingOutInterceptor());
 		factory.setServiceClass(WSTestRemote.class);
-		factory.setAddress("http://localhost:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
+		factory.setAddress("http://192.168.0.5:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
+//		factory.setAddress("http://192.168.0.5:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
 		WSTestRemote ws = (WSTestRemote) factory.create();
 		ws.triggerWebserviceSimple("123-456-789", ComponentState.OPEN);
 	}

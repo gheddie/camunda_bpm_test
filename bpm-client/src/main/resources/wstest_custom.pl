@@ -13,7 +13,7 @@ sub SOAP::Transport::HTTP::Client::get_basic_credentials {
  
 # declare the SOAP endpoint here
 my $soap = SOAP::Lite
-    -> proxy('http://localhost:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl');
+    -> proxy('http://192.168.0.5:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl');
  
 # calling the function
 my $method = SOAP::Data->name('triggerWebserviceSimple')->attr({xmlns => 'http://wstest.logic.ejb.bpmtest.gravitex.de/'}); 

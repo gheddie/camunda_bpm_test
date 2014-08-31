@@ -22,8 +22,8 @@ public class TestJBossConnection {
 
 	public static void main(String[] args) {		
 //		testCarRequestProcess();
-//		testWebservice();
-		testWebserviceSimple();
+		testWebservice();
+//		testWebserviceSimple();
 	}
 
 	private static void testWebserviceSimple() {
@@ -31,7 +31,7 @@ public class TestJBossConnection {
 		factory.getInInterceptors().add(new LoggingInInterceptor());
 		factory.getOutInterceptors().add(new LoggingOutInterceptor());
 		factory.setServiceClass(WSTestRemote.class);
-		factory.setAddress("http://localhost:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
+		factory.setAddress("http://192.168.0.5:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
 		WSTestRemote ws = (WSTestRemote) factory.create();
 		ws.triggerWebserviceSimple(null, null);
 	}
@@ -47,14 +47,14 @@ public class TestJBossConnection {
 		}
 			
 		//BY WS CALL
-		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
-		factory.getInInterceptors().add(new LoggingInInterceptor());
-		factory.getOutInterceptors().add(new LoggingOutInterceptor());
-		factory.setServiceClass(WSTestRemote.class);
-		factory.setAddress("http://localhost:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
-		WSTestRemote ws = (WSTestRemote) factory.create();
-		int result = ws.triggerWebservice("hello from web service !", 6, 616);
-		System.out.println("result in client is "+result+".");
+//		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
+//		factory.getInInterceptors().add(new LoggingInInterceptor());
+//		factory.getOutInterceptors().add(new LoggingOutInterceptor());
+//		factory.setServiceClass(WSTestRemote.class);
+//		factory.setAddress("http://192.168.0.5:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
+//		WSTestRemote ws = (WSTestRemote) factory.create();
+//		int result = ws.triggerWebservice("hello from web service !", 6, 616);
+//		System.out.println("result in client is "+result+".");
 	}
 
 	private static void testCarRequestProcess() {
