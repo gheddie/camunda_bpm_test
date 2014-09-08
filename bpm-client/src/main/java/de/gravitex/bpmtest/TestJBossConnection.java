@@ -24,6 +24,18 @@ public class TestJBossConnection {
 //		testCarRequestProcess();
 		testWebservice();
 //		testWebserviceSimple();
+//		testParallelWait();
+	}
+
+	private static void testParallelWait() {
+		try {
+			InitialContext context = getServerContext();
+			EngineProviderRemote engineProvider = lookupRemoteInterface(EngineProviderRemote.class, context);
+//			engineProvider.startProcessInstance("testParallelWait", null);
+			engineProvider.completeTask("17d60901-3758-11e4-9ed7-1a1320524153");
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private static void testWebserviceSimple() {
@@ -39,22 +51,22 @@ public class TestJBossConnection {
 	private static void testWebservice() {
 		
 		//BY JNDI
-		try {
-			InitialContext context = getServerContext();
-			lookupRemoteInterface(WSTestRemote.class, context).triggerWebservice("moo", 0, 0);
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			InitialContext context = getServerContext();
+//			lookupRemoteInterface(WSTestRemote.class, context).triggerWebservice("moo", 0, 0);
+//		} catch (NamingException e) {
+//			e.printStackTrace();
+//		}
 			
 		//BY WS CALL
-//		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
-//		factory.getInInterceptors().add(new LoggingInInterceptor());
-//		factory.getOutInterceptors().add(new LoggingOutInterceptor());
-//		factory.setServiceClass(WSTestRemote.class);
-//		factory.setAddress("http://192.168.0.5:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
-//		WSTestRemote ws = (WSTestRemote) factory.create();
-//		int result = ws.triggerWebservice("hello from web service !", 6, 616);
-//		System.out.println("result in client is "+result+".");
+		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
+		factory.getInInterceptors().add(new LoggingInInterceptor());
+		factory.getOutInterceptors().add(new LoggingOutInterceptor());
+		factory.setServiceClass(WSTestRemote.class);
+		factory.setAddress("http://localhost:8484/bpm-ejb-1.0-SNAPSHOT/HelloWorldWS?wsdl");
+		WSTestRemote ws = (WSTestRemote) factory.create();
+		int result = ws.triggerWebservice("hello from web service !", 6, 616);
+		System.out.println("result in client is "+result+".");
 	}
 
 	private static void testCarRequestProcess() {
