@@ -1,4 +1,4 @@
-package de.gravitex.bpmtest;
+package de.gravitex.bpmtest.perl;
 
 import java.util.Properties;
 

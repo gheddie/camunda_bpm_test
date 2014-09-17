@@ -7,10 +7,12 @@ public class BpmnVariables {
 		/**
 		 * Anzahl der Sitze, die ein beantragtes Dienstfahrzeug haben soll.
 		 */
-		public static final String NUM_SEATS_REQUESTED = "NUM_SEATS_REQUESTED";
+		public static final String NUM_SEATS_REQUESTED = "numSeatsRequested";
 		
-		public static final String REQUEST_CAR_FROM = "REQUEST_CAR_FROM";
+		public static final String REQUEST_CAR_FROM = "requestCarFrom";
 		
-		public static final String REQUEST_CAR_UNTIL = "REQUEST_CAR_UNTIL";
+		public static final String REQUEST_CAR_UNTIL = "requestCarUntil";
+		
+		public static final String REQUEST_LICENCE_POT = "reqDlPoTime";
 	}
 }

@@ -1,4 +1,4 @@
-package de.gravitex.bpmtest;
+package de.gravitex.bpmtest.perl;
 
 import org.apache.cxf.interceptor.LoggingInInterceptor;
 import org.apache.cxf.interceptor.LoggingOutInterceptor;
